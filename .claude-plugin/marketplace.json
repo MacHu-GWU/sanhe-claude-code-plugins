@@ -5,7 +5,7 @@
     },
     "plugins": [
         {
-            "name": "tell me a joke",
+            "name": "tell-me-a-joke",
             "source": "./plugins/general/tell-me-a-joke",
             "description": "Tell me a joke plugin for Claude Code."
         }
