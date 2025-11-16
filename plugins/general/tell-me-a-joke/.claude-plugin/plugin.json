@@ -1,0 +1,8 @@
+{
+    "name": "tell me a joke",
+    "description": "Tell me a joke plugin for Claude Code.",
+    "version": "1.0.0",
+    "author": {
+        "name": "Sanhe Hu"
+    }
+}
