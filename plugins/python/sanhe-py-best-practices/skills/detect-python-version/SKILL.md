@@ -9,12 +9,9 @@ Runs a script that outputs the Python version in `major.minor` format (e.g., `3.
 
 ## Instructions
 
-Execute the detection script with one of these commands (try in sequence):
+Run `scripts/detect_version.py` to detect the Python version.
 
-1. `.venv/bin/python scripts/detect_version.py`
-2. `python scripts/detect_version.py`
-
-The script outputs just the version string, nothing else.
+The script outputs just the version string in `major.minor` format, nothing else.
 
 ## Examples
 
