@@ -34,20 +34,22 @@ def main():
     path_sphinx_conf_py = dir_docs_source / "conf.py"
     path_makefile = dir_project_root / "Makefile"
     python_project_metadata = {
-        "package_name": (package_name, "description_here"),
-        "package_version": (package_version, "description_here"),
-        "dir_package": (str(dir_package), "description_here"),
-        "path_venv_bin_python": (str(path_venv_bin_python), "description_here"),
-        "path_venv_bin_pip": (str(path_venv_bin_pip), "description_here"),
-        "path_venv_bin_pytest": (str(path_venv_bin_pytest), "description_here"),
-        "dir_unit_tests": (str(dir_unit_tests), "description_here"),
-        "dir_docs_source": (str(dir_docs_source), "description_here"),
-        "path_sphinx_conf_py": (str(path_sphinx_conf_py), "description_here"),
-        "path_makefile": (str(path_makefile), "description_here"),
+        "package_name": (package_name, "Package name from pyproject.toml"),
+        "package_version": (package_version, "Package version"),
+        "dir_package": (str(dir_package), "Main package directory"),
+        "path_venv_bin_python": (str(path_venv_bin_python), "virtualenv Python interpreter"),
+        "path_venv_bin_pip": (str(path_venv_bin_pip), "virtualenv Pip package manager"),
+        "path_venv_bin_pytest": (str(path_venv_bin_pytest), "virtualenv Pytest test runner"),
+        "dir_unit_tests": (str(dir_unit_tests), "Unit tests directory"),
+        "dir_docs_source": (str(dir_docs_source), "Documentation source"),
+        "path_sphinx_conf_py": (str(path_sphinx_conf_py), "Sphinx config file"),
+        "path_makefile": (str(path_makefile), "Commands for environment, testing, docs, and releases"),
     }
-    print("Python structure here ...")
+    print("Python Project Structure:")
     for key, (path, description) in python_project_metadata.items():
-        print(f"{key} ({description}) = {path!r}")
+        print(f"{key}")
+        print(f"  Path: {path}")
+        print(f"  Desc: {description}\n")
 
 
 if __name__ == "__main__":
