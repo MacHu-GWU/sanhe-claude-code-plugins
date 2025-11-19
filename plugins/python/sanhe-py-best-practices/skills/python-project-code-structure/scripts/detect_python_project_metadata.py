@@ -30,17 +30,24 @@ def main():
     path_venv_bin_pip = dir_venv / "bin" / "pip"
     path_venv_bin_pytest = dir_venv / "bin" / "pytest"
     dir_unit_tests = dir_project_root / "tests"
+    dir_docs_source = dir_project_root / "docs" / "source"
+    path_sphinx_conf_py = dir_docs_source / "conf.py"
+    path_makefile = dir_project_root / "Makefile"
     python_project_metadata = {
-        "package_name": package_name,
-        "package_version": package_version,
-        "dir_package": str(dir_package),
-        "path_venv_bin_python": str(path_venv_bin_python),
-        "path_venv_bin_pip": str(path_venv_bin_pip),
-        "path_venv_bin_pytest": str(path_venv_bin_pytest),
-        "dir_unit_tests": str(dir_unit_tests),
+        "package_name": (package_name, "description_here"),
+        "package_version": (package_version, "description_here"),
+        "dir_package": (str(dir_package), "description_here"),
+        "path_venv_bin_python": (str(path_venv_bin_python), "description_here"),
+        "path_venv_bin_pip": (str(path_venv_bin_pip), "description_here"),
+        "path_venv_bin_pytest": (str(path_venv_bin_pytest), "description_here"),
+        "dir_unit_tests": (str(dir_unit_tests), "description_here"),
+        "dir_docs_source": (str(dir_docs_source), "description_here"),
+        "path_sphinx_conf_py": (str(path_sphinx_conf_py), "description_here"),
+        "path_makefile": (str(path_makefile), "description_here"),
     }
-    for key, value in python_project_metadata.items():
-        print(f"{key} = {value!r}")
+    print("Python structure here ...")
+    for key, (path, description) in python_project_metadata.items():
+        print(f"{key} ({description}) = {path!r}")
 
 
 if __name__ == "__main__":
