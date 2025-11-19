@@ -8,7 +8,7 @@ name = "sanhe_claude_code_plugins"
 # Increment version before each release - follow `semantic versioning <https://semver.org/>`_
 # Currently, poetry 2.1.X doesn't support dynamic versioning
 # (Read https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#version)
-# So this value has to be aligned with the one in ``learn_haystack/_version.py``
+# So this value has to be aligned with the one in ``sanhe_claude_code_plugins/_version.py``
 version = "0.1.1"
 description = "Python claude code plugins."
 # Read https://dev-exp-share.readthedocs.io/en/latest/search.html?q=Pick+An+Open+Source+License+For+Python+Project&check_keywords=yes&area=default
@@ -108,12 +108,12 @@ auto = [
 
 # Quick Links
 [project.urls]
-Homepage = "https://github.com/MacHu-GWU/learn_haystack-project"
-Documentation = "https://learn-haystack.readthedocs.io/en/latest/"
-Repository = "https://github.com/MacHu-GWU/learn_haystack-project"
-Issues = "https://github.com/MacHu-GWU/learn_haystack-project/issues"
-Changelog = "https://github.com/MacHu-GWU/learn_haystack-project/blob/main/release-history.rst"
-Download = "https://pypi.org/pypi/learn-haystack#files"
+Homepage = "https://github.com/MacHu-GWU/sanhe_claude_code_plugins-project"
+Documentation = "https://sanhe-claude-code-plugins.readthedocs.io/en/latest/"
+Repository = "https://github.com/MacHu-GWU/sanhe_claude_code_plugins-project"
+Issues = "https://github.com/MacHu-GWU/sanhe_claude_code_plugins-project/issues"
+Changelog = "https://github.com/MacHu-GWU/sanhe_claude_code_plugins-project/blob/main/release-history.rst"
+Download = "https://pypi.org/pypi/sanhe-claude-code-plugins#files"
 
 # For command line interface, read: https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#creating-executable-scripts
 [project.scripts]
@@ -124,12 +124,12 @@ poetry-plugin-export = ">=1.9.0,<2.0.0"
 [tool.poetry]
 # Files to include in the package distribution
 packages = [
-    { include = "learn_haystack", from = ".", to = "." }
+    { include = "sanhe_claude_code_plugins", from = ".", to = "." }
 ]
 # Files to exclude from the package
 exclude = [
-    "learn_haystack/tests/*",
-    "learn_haystack/docs/*",
+    "sanhe_claude_code_plugins/tests/*",
+    "sanhe_claude_code_plugins/docs/*",
     "**/*.pyc",
     "**/*.pyo",
 ]
@@ -153,7 +153,7 @@ codecov_token_field = "providers.codecov_io.accounts.sh.users.sh.secrets.dev.val
 # and put the token at ``${HOME}/home_secret.json``
 readthedocs_token_field = "providers.readthedocs.accounts.sh.users.sh.secrets.dev.value"
 # Readthedocs project name, usually it is the same as your project name
-readthedocs_project_name = "learn_haystack"
+readthedocs_project_name = "sanhe_claude_code_plugins"
 
 # Read: https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#declaring-the-build-backend
 [build-system]
