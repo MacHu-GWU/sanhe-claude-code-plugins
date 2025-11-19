@@ -4,59 +4,31 @@ Each Python package (directory containing `__init__.py`) has a corresponding tes
 
 ## Directory Structure Pattern
 
-**Pattern:**
-```
-Package: <project>/<subpackage>/
-Test directory: tests/<subpackage>/
-Coverage runner: tests/<subpackage>/all.py
-```
-
-**Example:**
-
-| Package | Test Directory | Coverage Runner |
-|---------|----------------|-----------------|
-| `learn_claude_code/math/operations/` | `tests/math/operations/` | `tests/math/operations/all.py` |
-| `learn_claude_code/utils/` | `tests/utils/` | `tests/utils/all.py` |
-| `learn_claude_code/` | `tests/learn_claude_code/` | `tests/learn_claude_code/all.py` |
-
-## Full Project Structure Example
+The test directory structure mirrors your source directory:
 
 ```
-learn_claude_code/
-├── __init__.py
-├── math/
-│   ├── __init__.py
-│   └── operations/
-│       ├── __init__.py
-│       └── calculator.py
-└── utils/
-    ├── __init__.py
-    └── helpers.py
-
-tests/
-├── all.py                    (run all tests for entire project)
-├── learn_claude_code/
-│   └── all.py               (run all tests for learn_claude_code package)
-├── math/
-│   ├── all.py               (run all tests for math package)
-│   └── operations/
-│       ├── all.py           (run all tests for operations package)
-│       └── test_math_operations_calculator.py
-└── utils/
-    ├── all.py               (run all tests for utils package)
-    └── test_utils_helpers.py
+Source:  <project>/<subpackage>/
+Tests:   tests/<subpackage>/
 ```
-
-## Root Level Tests
-
-The main `tests/all.py` at the project root runs code coverage tests for all modules across all packages in your entire project.
 
 ## Purpose of `all.py` Files
 
-- **Package coverage**: Each `all.py` runs coverage tests for its specific package
-- **Hierarchical testing**: Tests can be run at any level (package, subpackage, or whole project)
-- **Development workflow**: Test individual packages during development; run full suite before committing
+Each test directory includes an `all.py` file that:
+- Runs coverage tests for all modules in that package
+- Generates HTML coverage reports for the package
+- Enables hierarchical testing (test individual packages or entire project)
 
-## Coverage Tools Integration
+**Examples:**
+- `tests/all.py` - Run all tests for entire project
+- `tests/math/all.py` - Run all tests for math package
+- `tests/math/operations/all.py` - Run all tests for operations subpackage
 
-The `all.py` files integrate with your `.coveragerc` configuration to generate HTML coverage reports for their respective packages or the entire project.
+## Finding the Right Test Location
+
+Use the `locate_test_file.py` script to determine where a test file should be placed for any source file:
+
+```bash
+python scripts/locate_test_file.py /absolute/path/to/source/file.py
+```
+
+This handles the naming convention automatically. See the SKILL.md for usage examples.

@@ -17,14 +17,17 @@ Comprehensive testing strategy for Python projects with organized test structure
 
 ## Key Concepts
 
-**Test Organization**: Each source file has a corresponding test file with structured naming conventions.
+**Test Organization**: Each source file has a corresponding test file in the `tests/` directory, following a structured naming convention (see `locate_test_file.py` for automatic determination).
 
 **Coverage Goals**: Target 95%+ code coverage for implementation files.
 
 **Public API Testing**: Use `api.py` to expose all public interfaces and test them in `tests/test_api.py`.
 
+**Test File Location**: To determine where a test file should be placed for any Python source file, use the `locate_test_file.py` script (see below).
+
 ## Quick Reference
 
+- 🎯 **Determine Test File Location**: Use `locate_test_file.py` script (see below)
 - 📋 **Unit Test Organization**: See [Unit Testing Guide](./reference/unit-testing.md)
 - 🗂️ **Directory Structure**: See [Test Structure Reference](./reference/test-structure.md)
 - ▶️ **Running Tests**: See [Running Tests Guide](./reference/running-tests.md)
@@ -42,9 +45,16 @@ For a project named `learn_claude_code`:
 
 ## Utility Script: locate_test_file.py
 
-The included `scripts/locate_test_file.py` utility helps identify where test files should be placed for a given source file. This is useful for IDE integrations, pre-commit hooks, and development workflows.
+**Purpose**: Automatically determine the correct test file location for any Python source file based on the test naming convention.
 
-**Usage:**
+This is essential for:
+- Creating test files in the correct location
+- IDE integrations (jump from source to test)
+- Pre-commit hooks that verify tests exist
+- Build tools that generate test file structures
+- Development workflows
+
+**Basic Usage:**
 ```bash
 python scripts/locate_test_file.py /absolute/path/to/source/file.py
 ```
@@ -55,7 +65,7 @@ python scripts/locate_test_file.py /Users/dev/project/learn_claude_code/math/ope
 # Output: /Users/dev/project/tests/math/operations/test_math_operations_calculator.py
 ```
 
-**Verbose mode (shows calculation details):**
+**Verbose Mode** (shows calculation details):
 ```bash
 python scripts/locate_test_file.py -v /Users/dev/project/learn_claude_code/utils/helpers.py
 # Output:
@@ -64,5 +74,7 @@ python scripts/locate_test_file.py -v /Users/dev/project/learn_claude_code/utils
 # Relative source:  learn_claude_code/utils/helpers.py
 # Test file:        /Users/dev/project/tests/utils/test_utils_helpers.py
 ```
+
+**When to Use**: Any time you need to know where a test file should be placed for a given source file. The script automatically handles all naming convention logic.
 
 See the reference guides for comprehensive details on each aspect of the testing strategy.
