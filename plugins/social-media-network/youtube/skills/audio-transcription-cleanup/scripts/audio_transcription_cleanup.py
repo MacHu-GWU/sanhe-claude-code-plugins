@@ -1,5 +1,54 @@
 # -*- coding: utf-8 -*-
 
+"""
+Audio Transcription Cleanup Script
+
+This module transforms messy voice transcription text into well-formatted, human-readable
+markdown documents using Claude CLI. It preserves all original meaning and content while
+improving readability through intelligent text cleanup and restructuring.
+
+Key Features:
+    - Remove verbal artifacts (um, uh, like, filler words in any language)
+    - Fix spelling and grammar errors
+    - Add semantic paragraph breaks and section headings
+    - Support for single-speaker and multi-speaker content
+    - Multi-language support (English, Chinese, and more)
+    - Preserve all original information (no summarization)
+    - Default output location with overwrite capability
+    - Custom output locations with overwrite protection
+
+Default Behavior:
+    - Output: ~/tmp/cleaned_transcript.md (allows overwrite)
+    - Language: Auto-detected from source
+    - Format: Well-structured markdown with headings
+
+Custom Output:
+    - Cannot overwrite existing files (raises FileExistsError)
+    - Creates parent directories automatically
+
+Text Cleanup Operations:
+    - Remove filler words: um, uh, like, you know, 呃, 啊, 那个, 就是说
+    - Fix obvious noun errors and typos
+    - Correct grammar mistakes
+    - Convert spoken fragments to complete sentences
+    - Add descriptive section headings
+    - Organize content into semantic paragraphs
+
+Example Usage:
+    # Use default output location (allows overwrite)
+    $ python audio_transcription_cleanup.py --transcript-file /path/to/transcript.txt
+
+    # Specify custom output location (cannot overwrite existing file)
+    $ python audio_transcription_cleanup.py --transcript-file /path/to/transcript.txt --output ~/Documents/cleaned.md
+
+Requirements:
+    - Claude CLI must be installed and accessible
+    - Transcript file must exist at specified path
+
+Author: sanhe
+Plugin: youtube@sanhe-claude-code-plugins
+"""
+
 import subprocess
 import argparse
 from pathlib import Path
