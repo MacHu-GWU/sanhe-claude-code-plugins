@@ -9,14 +9,14 @@ Clean up raw audio transcriptions by removing filler words, fixing errors, and a
 
 ## Usage
 
-Use the `audio_transcription_cleanup.py` script to process transcript files:
+Use the `audio_transcript_cleanup.py` script to process transcript files:
 
 ```bash
 # Use default output location (~/tmp/cleaned_transcript.md - allows overwrite)
-python scripts/audio_transcription_cleanup.py --transcript-file /path/to/transcript.txt
+python scripts/audio_transcript_cleanup.py --transcript-file /path/to/transcript.txt
 
 # Specify custom output location (cannot overwrite existing files)
-python scripts/audio_transcription_cleanup.py --transcript-file /path/to/transcript.txt --output /path/to/output.md
+python scripts/audio_transcript_cleanup.py --transcript-file /path/to/transcript.txt --output /path/to/output.md
 ```
 
 ## What It Does
