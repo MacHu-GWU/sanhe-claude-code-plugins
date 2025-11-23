@@ -3,9 +3,9 @@ name: youtube-video-to-audio
 description: Download YouTube videos as audio files using yt-dlp
 ---
 
-# YouTube to MP3
+# YouTube Video to Audio
 
-Extract and download audio from YouTube videos as audio files.
+Extract and download audio from YouTube videos.
 
 ## Usage
 
@@ -24,7 +24,7 @@ python scripts/download_audio.py --video-url "https://www.youtube.com/watch?v=VI
 ## Examples
 
 ```bash
-# Basic usage
+# Basic usage (default: 64K bitrate MP3 to ~/tmp/download_audio_result.mp3)
 python scripts/download_audio.py --video-url "https://www.youtube.com/watch?v=d6rZtgHcbWA"
 
 # High quality with custom bitrate
@@ -32,14 +32,10 @@ python scripts/download_audio.py --video-url "https://youtu.be/xyz" --quality "b
 
 # Custom output location
 python scripts/download_audio.py --video-url "https://youtu.be/xyz" --output "/path/to/output.mp3"
-
-# Get help
-python scripts/download_audio.py -h
 ```
 
-## How it Works
+## Requirements
 
-1. Automatically downloads yt-dlp binary if not present
-2. Uses yt-dlp to extract audio from YouTube videos
-3. Converts to MP3 using ffmpeg
-4. Saves to specified location, by default it is `~/tmp/download_audio_result.mp3`
+- Python 3.11+
+- ffmpeg installed at `~/ffmpeg`
+- yt-dlp (auto-downloaded on first run)
