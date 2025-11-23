@@ -1,5 +1,55 @@
 # -*- coding: utf-8 -*-
 
+"""
+YouTube Audio Downloader
+
+This module provides functionality to download audio from YouTube videos using yt-dlp.
+It supports cross-platform operation (Windows, macOS, Linux) and includes automatic
+yt-dlp binary management with built-in protection against overwriting existing files.
+
+Key Features:
+    - Download audio from YouTube videos as MP3 files
+    - Automatic yt-dlp binary download and updates
+    - Cross-platform support (Windows, macOS, Linux)
+    - Customizable audio quality and bitrate
+    - Default output location with overwrite capability
+    - Custom output locations with overwrite protection
+    - Automatic directory creation for custom paths
+
+Default Behavior:
+    - Output: ~/tmp/download_audio_result.mp3 (allows overwrite)
+    - Quality: bestaudio[abr<=64]/worstaudio
+    - Format: MP3
+    - Bitrate: 64K
+
+Custom Output:
+    - Cannot overwrite existing files (raises FileExistsError)
+    - Creates parent directories automatically
+
+Example Usage:
+    # Download with defaults (allows overwrite)
+    $ python download_audio.py --video-url "https://www.youtube.com/watch?v=d6rZtgHcbWA"
+
+    # Custom quality and bitrate
+    $ python download_audio.py --video-url "https://youtu.be/xyz" --quality "bestaudio" --bitrate "128K"
+
+    # Custom output location (cannot overwrite existing)
+    $ python download_audio.py --video-url "https://youtu.be/xyz" --output "/path/to/audio.mp3"
+
+Requirements:
+    - ffmpeg installed at ~/ffmpeg
+    - Internet connection for downloading yt-dlp and videos
+    - yt-dlp will be automatically downloaded if not present
+
+Platform Support:
+    - Windows: Downloads yt-dlp.exe
+    - macOS: Downloads yt-dlp_macos
+    - Linux: Downloads yt-dlp_linux
+
+Author: sanhe
+Plugin: youtube@sanhe-claude-code-plugins
+"""
+
 import sys
 import os
 import json

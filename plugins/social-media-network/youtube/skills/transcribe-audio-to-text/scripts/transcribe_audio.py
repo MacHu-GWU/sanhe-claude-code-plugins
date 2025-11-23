@@ -1,5 +1,45 @@
 # -*- coding: utf-8 -*-
 
+"""
+Audio Transcription Script
+
+This module provides functionality to transcribe audio files to text using the audinota CLI.
+It supports both default and custom output locations, with built-in protection against
+accidentally overwriting existing files at custom locations.
+
+Key Features:
+    - Transcribe audio files using audinota
+    - Default output location with overwrite capability
+    - Custom output locations with overwrite protection
+    - Automatic directory creation for custom paths
+    - Integration with youtube-video-to-audio skill workflow
+
+Default Behavior:
+    - Input: ~/tmp/download_audio_result.mp3
+    - Output: ~/tmp/download_audio_result.txt (allows overwrite)
+
+Custom Output:
+    - Cannot overwrite existing files (raises FileExistsError)
+    - Creates parent directories automatically
+
+Example Usage:
+    # Use defaults (allows overwrite)
+    $ python transcribe_audio.py
+
+    # Custom audio file
+    $ python transcribe_audio.py --audio-file-path "/path/to/audio.mp3"
+
+    # Custom output (cannot overwrite existing)
+    $ python transcribe_audio.py --audio-file-path "/path/to/audio.mp3" --output "~/Documents/transcript.txt"
+
+Requirements:
+    - audinota installed at ~/Documents/GitHub/audinota-project/.venv/bin/audinota
+    - Audio file must exist at specified path
+
+Author: sanhe
+Plugin: youtube@sanhe-claude-code-plugins
+"""
+
 import subprocess
 import argparse
 from pathlib import Path
