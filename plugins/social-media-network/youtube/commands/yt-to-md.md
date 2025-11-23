@@ -69,4 +69,4 @@ Click the link above to open the document.
 - Provide clear success message
 - Make it easy for user to access the final document
 
-**Note:** This command automates the core workflow from video URL to organized markdown document. Citation enrichment is optional and left to the user's discretion. Each skill can also be run independently for partial workflows.
+**Note:** This command automates the core workflow from video URL to organized markdown document. Each skill can also be run independently for partial workflows.

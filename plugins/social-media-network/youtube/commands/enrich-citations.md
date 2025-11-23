@@ -25,18 +25,8 @@ The command accepts ARGUMENTS which can be either:
 
 ### 1. Load Content
 
-**If absolute path provided:**
-```python
-# Read content from file
-with open(file_path, 'r', encoding='utf-8') as f:
-    content = f.read()
-```
-
-**If inline content provided:**
-```python
-# Use the provided text directly
-content = arguments
-```
+- If absolute path provided: Read content from file
+- If inline content provided: Use the provided text directly
 
 ### 2. Enrich Citations
 
