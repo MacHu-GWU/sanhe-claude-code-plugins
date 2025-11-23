@@ -1,11 +1,5 @@
 # -*- coding: utf-8 -*-
 
-"""
-Example usage::
-
-    python /Users/sanhehu/Documents/GitHub/sanhe-claude-code-plugins/plugins/social-media-network/youtube/skills/audio-transcription-cleanup/scripts/audio_transcription_cleanup.py --transcript-file /Users/sanhehu/tmp/download_audio_result.txt
-"""
-
 import subprocess
 import argparse
 from pathlib import Path
@@ -208,7 +202,11 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
+  # Use default output location (allows overwrite)
   %(prog)s --transcript-file "~/tmp/transcript.txt"
+
+  # Specify custom output location (cannot overwrite existing file)
+  %(prog)s --transcript-file "~/tmp/transcript.txt" --output "~/Documents/cleaned.md"
 
 Cleanup Operations:
   - Remove verbal artifacts: um, uh, like, you know, 呃, 啊, 那个
@@ -217,10 +215,9 @@ Cleanup Operations:
   - Convert spoken fragments into complete sentences
   - Preserve all original information
 
-Language Support:
-  - auto: Auto-detect from source (default)
-  - en: English output
-  - zh: Chinese output
+Output Behavior:
+  - Default location (~/tmp/cleaned_transcript.md): Allows overwrite
+  - Custom location: Cannot overwrite existing files (will raise error)
 
 Note:
   This script uses Claude CLI to perform intelligent transcript cleanup.
@@ -231,7 +228,15 @@ Note:
     parser.add_argument(
         "--transcript-file",
         type=str,
-        help=f"Path to the transcript file to clean up",
+        required=True,
+        help=f"Path to the transcript file to clean up (required)",
+    )
+
+    parser.add_argument(
+        "--output",
+        type=str,
+        default=None,
+        help=f"Output file path for cleaned transcript (default: {path_cleaned_transcript}). Note: Default location allows overwrite, custom locations cannot overwrite existing files.",
     )
 
     args = parser.parse_args()
@@ -239,11 +244,36 @@ Note:
     # Convert to Path objects and expand user home directory
     path_transcript = Path(args.transcript_file).expanduser()
 
+    # Determine output path
+    if args.output:
+        path_output = Path(args.output).expanduser()
+        # For custom locations, check if file already exists
+        if path_output.exists():
+            raise FileExistsError(
+                f"Output file already exists at {path_output}. "
+                f"Please choose a different location or remove the existing file. "
+                f"(Default location {path_cleaned_transcript} allows overwrite)"
+            )
+    else:
+        # Use default location (allows overwrite)
+        path_output = path_cleaned_transcript
+
+    # Ensure output directory exists
+    path_output.parent.mkdir(parents=True, exist_ok=True)
+
     # Clean up the transcript
     cleaned_transcript = cleanup_transcript(
         path_transcript=path_transcript,
     )
-    print(cleaned_transcript)
+
+    # Save to output file
+    path_output.write_text(cleaned_transcript, encoding="utf-8")
+
+    # Print success message with clickable file path
+    absolute_path = path_output.resolve()
+    print(f"✓ Transcript cleanup completed successfully!")
+    print(f"✓ Cleaned transcript saved to: file://{absolute_path}")
+    print(f"\nClick the link above to open the document.")
 
 
 if __name__ == "__main__":
