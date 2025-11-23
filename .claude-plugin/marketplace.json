@@ -13,6 +13,11 @@
             "name": "sanhe-py-best-practices",
             "source": "./plugins/python/sanhe-py-best-practices",
             "description": "Sanhe's Python Best Practices."
+        },
+        {
+            "name": "youtube",
+            "source": "./plugins/social-media-network/youtube",
+            "description": "Youtube toolkit for Claude Code."
         }
     ]
 }
