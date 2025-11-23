@@ -2,8 +2,9 @@
 
 import sys
 import os
-import urllib.request
 import json
+import subprocess
+import urllib.request
 from pathlib import Path
 
 # Detect OS
@@ -22,6 +23,12 @@ else:
     raise RuntimeError(f"Unsupported platform: {_platform}")
 
 dir_home = Path.home()
+dir_tmp = dir_home / "tmp"
+try:
+    dir_tmp.mkdir(exist_ok=True)
+except Exception: # pragma: no cover
+    pass
+path_audio = dir_tmp / "download_audio" / "download_audio_result.mp3"
 
 if IS_WINDOWS:
     filename = "yt-dlp.exe"
@@ -35,6 +42,8 @@ elif IS_LINUX:
 else:
     raise RuntimeError("Unsupported operating system")
 
+path_ffmpeg = dir_home / "ffmpeg"
+
 
 def get_latest_yt_dlp_release() -> str:
     """Get the latest yt-dlp release version from GitHub API."""
@@ -46,7 +55,7 @@ def get_latest_yt_dlp_release() -> str:
         return tag_name
 
 
-def download_yt_dlp() -> Path:
+def download_yt_dlp():
     """Download the appropriate yt-dlp binary based on the OS."""
     # Get latest release version
     latest_version = get_latest_yt_dlp_release()
@@ -68,10 +77,41 @@ def download_yt_dlp() -> Path:
     print(f"Successfully downloaded yt-dlp to {path_yt_dlp}")
 
 
+
+def download_audio(video_url: str):
+    """Download audio from a YouTube video using yt-dlp."""
+    args = [
+        f"{path_yt_dlp}",
+        "-f",
+        "bestaudio[abr<=64]/worstaudio",
+        "--extract-audio",
+        "--audio-format",
+        "mp3",
+        "--audio-quality",
+        "64K",
+        "-o",
+        f"{path_audio}",
+        "--restrict-filenames",
+        "--ffmpeg-location",
+        f"{str(Path.home() / 'ffmpeg')}",
+        video_url,
+    ]
+    result = subprocess.run(args, check=True, capture_output=True)
+    # print("----- returncode -----")
+    # print(result.returncode)
+    # print("----- stdout -----")
+    # print(result.stdout.decode("utf-8"))
+    # print("----- stderr -----")
+    # print(result.stderr.decode("utf-8"))
+
+
 def main():
     if path_yt_dlp.exists() is False:
         download_yt_dlp()
-
+    path_audio.unlink(missing_ok=True)
+    video_url = "https://www.youtube.com/watch?v=d6rZtgHcbWA&t"
+    download_audio(video_url=video_url)
+    print(f"Audio of Video file {video_url} is downloaded to {path_audio}")
 
 if __name__ == "__main__":
     main()
