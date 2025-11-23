@@ -128,13 +128,22 @@ def main():
     It automatically downloads yt-dlp if not present in the home directory.
 
     Example usage:
+        # Use default output location (allows overwrite)
         python download_audio.py --video-url "https://www.youtube.com/watch?v=d6rZtgHcbWA"
+
+        # Specify custom quality and bitrate
         python download_audio.py --video-url "https://youtu.be/xyz" --quality "bestaudio" --bitrate "128K"
+
+        # Specify custom output location (cannot overwrite existing file)
         python download_audio.py --video-url "https://youtu.be/xyz" --output "/path/to/output.mp3"
 
     Requirements:
         - ffmpeg must be installed at ~/ffmpeg
         - yt-dlp will be automatically downloaded to home directory if not present
+
+    Note:
+        - Default location (~/tmp/download_audio_result.mp3) allows overwrite
+        - Custom output locations cannot overwrite existing files
     """
     parser = argparse.ArgumentParser(
         description="Download audio from YouTube videos as MP3 files using yt-dlp",
@@ -186,7 +195,7 @@ Quality options:
         "--output",
         type=str,
         default=None,
-        help=f"Custom output file path (default: {path_audio})",
+        help=f"Custom output file path (default: {path_audio}). Note: Default location allows overwrite, custom locations cannot overwrite existing files.",
     )
 
     args = parser.parse_args()
@@ -196,9 +205,23 @@ Quality options:
         print("yt-dlp not found, downloading...")
         download_yt_dlp()
 
-    # Clean up previous output file if using default path and no custom output specified
-    if args.output is None:
+    # Determine output path and check for existing files
+    if args.output:
+        path_output = Path(args.output).expanduser()
+        # For custom locations, check if file already exists
+        if path_output.exists():
+            raise FileExistsError(
+                f"Output file already exists at {path_output}. "
+                f"Please choose a different location or remove the existing file. "
+                f"(Default location {path_audio} allows overwrite)"
+            )
+        # Ensure output directory exists
+        path_output.parent.mkdir(parents=True, exist_ok=True)
+        output_path_str = str(path_output)
+    else:
+        # Use default location (allows overwrite)
         path_audio.unlink(missing_ok=True)
+        output_path_str = None
 
     # Download the audio
     output_file = download_audio(
@@ -206,7 +229,7 @@ Quality options:
         quality=args.quality,
         audio_format=args.audio_format,
         bitrate=args.bitrate,
-        output_path=args.output,
+        output_path=output_path_str,
     )
 
     print(f"✓ Audio successfully downloaded from {args.video_url}")
