@@ -128,13 +128,13 @@ Examine the transcription to identify:
 
 ## [Topic 1]
 
-**Speaker A:** [清理后的对话内容]
+**Speaker A:** [cleaned content]
 
-**Speaker B:** [清理后的对话内容]
+**Speaker B:** [cleaned content]
 
 ## [Topic 2]
 
-**Speaker A:** [清理后的对话内容]
+**Speaker A:** [cleaned content]
 ```
 
 **For multi-speaker content** - Option 2 (Meeting notes format):
