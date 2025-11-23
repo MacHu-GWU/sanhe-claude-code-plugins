@@ -259,7 +259,7 @@ Quality options:
     if args.output:
         path_output = Path(args.output).expanduser()
         # For custom locations, check if file already exists
-        if path_output.exists():
+        if (path_output != path_audio) and path_output.exists():
             raise FileExistsError(
                 f"Output file already exists at {path_output}. "
                 f"Please choose a different location or remove the existing file. "
