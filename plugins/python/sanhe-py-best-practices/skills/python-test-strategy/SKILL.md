@@ -1,6 +1,6 @@
 ---
 name: python-test-strategy
-description: Python testing patterns with organized test file structure, coverage goals, and public API testing
+description: Python unit testing patterns for pytest, including test file structure, fixtures, mocks, and coverage strategy. Use when asked to write tests (unit/integration) for any Python module, function, class, or method.
 ---
 
 # python-test-strategy
@@ -10,8 +10,11 @@ Organized testing strategy for Python projects: test file naming, coverage goals
 ## Quick Start
 
 **Find test location for any source file:**
+
+When being asked to write tests for a specific source file, use the following command to determine the correct test file path based on established naming conventions:
+
 ```bash
-python scripts/locate_test_file.py /path/to/source/file.py
+uvx --from shai-py==0.1.1 shai-py test-path /path/to/my_package/subpackage/module.py
 ```
 
 **Run tests:**
