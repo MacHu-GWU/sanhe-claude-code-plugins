@@ -13,9 +13,9 @@ Test:   tests/<subpackage>/test_<subpackage>_<module>.py
 
 | Source | Test |
 |--------|------|
-| `learn_haystack/math/calculator.py` | `tests/math/test_math_calculator.py` |
-| `learn_haystack/math/ops/add.py` | `tests/math/ops/test_math_ops_add.py` |
-| `learn_haystack/utils.py` | `tests/test_utils.py` |
+| `my_package/math/calculator.py` | `tests/math/test_math_calculator.py` |
+| `my_package/math/ops/add.py` | `tests/math/ops/test_math_ops_add.py` |
+| `my_package/utils.py` | `tests/test_utils.py` |
 
 ## Finding Test Location
 
@@ -28,7 +28,7 @@ python scripts/locate_test_file.py /absolute/path/to/source.py
 
 Test directories mirror source packages:
 ```
-learn_haystack/          tests/
+my_package/          tests/
 ├── math/        →      ├── math/
 │   └── ops/     →      │   └── ops/
 └── utils.py     →      └── test_utils.py
