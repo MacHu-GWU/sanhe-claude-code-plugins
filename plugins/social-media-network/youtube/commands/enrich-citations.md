@@ -1,94 +1,38 @@
 ---
 name: enrich-citations
-description: Add authoritative source links for all facts, citations, and references in markdown content
+description: Add authoritative source links for all facts, citations, and references in markdown documents
 ---
 
-Process markdown content and enrich it with authoritative citation links:
+Enrich a markdown document with authoritative citation links using the `enrich-citations` skill.
 
-<input_markdown_content>
-$ARGUMENTS
-</input_markdown_content>
+## Input
 
-## Input Processing
+The command accepts a file path as argument:
 
-The command accepts ARGUMENTS which can be either:
+```
+/enrich-citations $ARGUMENTS
+```
 
-1. **Absolute file path**: If the ARGUMENTS starts with `/`, treat it as a file path
-   - Read the markdown content from the specified file
-   - Example: `/enrich-citations /Users/sanhehu/Documents/article.md`
-
-2. **Inline content**: If ARGUMENTS is not an absolute path, treat it as inline markdown text
-   - Process the text directly
-   - Example: `/enrich-citations This article mentions React and TypeScript frameworks.`
+Where `$ARGUMENTS` is the path to the markdown document to enrich.
 
 ## Workflow
 
-### 1. Load Content
+### 1. Run the enrich-citations Script
 
-- If absolute path provided: Read content from file
-- If inline content provided: Use the provided text directly
+Execute the `enrich-citations` skill script to process the document:
 
-### 2. Enrich Citations
+The script will:
+- Read the markdown document from the specified path
+- Identify all references (tools, research, products, organizations, people, standards)
+- Perform web searches to find authoritative sources
+- Add markdown hyperlinks with proper spacing: `[Reference](URL)`
+- Verify all URLs are valid and accessible
+- Save the enriched document to `~/tmp/citation_enriched.md`
 
-Use the `enrich-citations` agent skill to process the markdown content:
+### 2. Display Output Location
 
-**Identify all references:**
-- External sources and research papers
-- Tools, software, frameworks, libraries
-- Products and services
-- Organizations and institutions
-- Technical concepts and standards
-- People and experts
+After the script completes, it will automatically print the absolute path in a clickable format:
 
-**For each identified reference:**
-1. Perform web search to find the authoritative source
-2. Verify the URL is current and accessible
-3. Replace plain text with markdown hyperlinks: `[Reference](URL)`
-4. **Add spaces around hyperlinks**: `text [link](url) text`
-
-**Citation priority:**
-- Official sources (project homepages, official documentation)
-- Primary sources (original research papers, publications)
-- Authoritative organizations (standards bodies, academic institutions)
-- Reputable publications (tech blogs, news sites)
-- Community resources (GitHub, Stack Overflow)
-- General references (Wikipedia as last resort)
-
-**Quality requirements:**
-- Verify all links are valid and working
-- Ensure proper markdown formatting with spaces
-- Preserve all original content (only add hyperlinks)
-- Maintain document structure and meaning
-
-### 3. Save Output
-
-Save the enriched document to: `~/tmp/citation_enriched.md`
-
-**Example enrichment:**
-
-Input:
-```markdown
-# Introduction to Modern JavaScript
-
-JavaScript has evolved significantly with ES6 introducing features like arrow functions.
-TypeScript adds static typing to JavaScript and is developed by Microsoft.
-```
-
-Output:
-```markdown
-# Introduction to Modern JavaScript
-
-[JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) has evolved significantly with [ES6](https://www.ecma-international.org/ecma-262/6.0/) introducing features like arrow functions.
-[TypeScript](https://www.typescriptlang.org/) adds static typing to JavaScript and is developed by [Microsoft](https://www.microsoft.com/) .
-```
-
-### 4. Display Output Location
-
-After completing the enrichment and saving the document, print the absolute path in a clickable format.
-
-**Format:** `file:///absolute/path/to/citation_enriched.md`
-
-**Example output:**
 ```
 ✓ Citation enrichment completed successfully!
 ✓ Enriched document saved to: file:///Users/sanhehu/tmp/citation_enriched.md
@@ -96,26 +40,27 @@ After completing the enrichment and saving the document, print the absolute path
 Click the link above to open the document.
 ```
 
-**Requirements:**
-- Use absolute path (not relative path like `~/tmp/...`)
-- Include `file://` protocol prefix for clickability
-- Provide clear success message
-- Make it easy for user to access the enriched document
-
----
-
 ## Usage Examples
 
-**Enrich an existing file:**
+**Enrich a cleaned transcript:**
+```bash
+/enrich-citations ~/tmp/cleaned_transcript.md
+```
+
+**Enrich any markdown document:**
 ```bash
 /enrich-citations /Users/sanhehu/Documents/article.md
 ```
 
-**Enrich inline content:**
+**Complete workflow after /yt-to-md:**
 ```bash
-/enrich-citations This article discusses React, Next.js, and Vercel deployment.
+# Step 1: Create organized transcript
+/yt-to-md https://www.youtube.com/watch?v=xyz
+
+# Step 2: Optionally enrich with citations
+/enrich-citations ~/tmp/cleaned_transcript.md
 ```
 
 ---
 
-**Note:** This command makes citation enrichment quick and accessible. It automatically performs web searches to find authoritative sources and adds verified hyperlinks to the document.
+**Note:** This command uses the `enrich-citations` skill script which leverages Claude CLI with web search to automatically find and verify authoritative sources for all references in the document.
