@@ -1,5 +1,4 @@
 ---
-name: test-for
 description: Write pytest tests for Python modules, functions, classes, or methods following Sanhe's best practices
 ---
 
