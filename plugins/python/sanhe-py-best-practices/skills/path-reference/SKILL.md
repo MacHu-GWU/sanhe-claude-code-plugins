@@ -11,12 +11,12 @@ Create clickable links to paths in a git repository.
 
 **Get web URL** (always use `-b default` for stable links):
 ```bash
-uvx --from gwu==1.0.1 gwu url -p $path -b default
+uvx --from git-web-url==1.0.1 gwu url -p $path -b default
 ```
 
 **Get relative path** (for display text):
 ```bash
-uvx --from gwu==1.0.1 gwu relpath -p $path
+uvx --from git-web-url==1.0.1 gwu relpath -p $path
 ```
 
 ## Link Formats
