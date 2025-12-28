@@ -73,61 +73,39 @@ While you can access files directly, **prefer using CLI commands** as the primar
 
 ## CLI Commands
 
-Most operations should be done via CLI. Run all commands with uvx:
+Most operations should be done via CLI.
 
+### Workflow (MUST FOLLOW)
+
+**Step 1**: Run `rebuild_index_db` first to sync the index:
 ```bash
-uvx --from shai-tix==0.1.3 shai-tix <command>
-```
-
-For detailed usage of any command:
-```bash
-uvx --from shai-tix==0.1.3 shai-tix -h                    # List all commands
-uvx --from shai-tix==0.1.3 shai-tix <command> -h          # Command-specific help
-```
-
-### Story Commands
-
-| Command | Description |
-|---------|-------------|
-| `create_story` | Create a new story with title and optional description |
-| `get_story` | Get story details including path, description, and report |
-| `list_stories` | List all stories (newest first, default limit 20) |
-| `search_stories` | Search stories by title, status, date range, or ID range |
-| `update_story` | Update story title, status, description, or report |
-| `delete_story` | Delete a story and all its tasks |
-
-### Task Commands
-
-| Command | Description |
-|---------|-------------|
-| `create_task` | Create a task under a story |
-| `get_task` | Get task details including path, description, and report |
-| `list_tasks` | List all tasks (newest first) |
-| `list_tasks_by_story` | List tasks under a specific story |
-| `search_tasks` | Search tasks by title, status, date range, or ID range |
-| `update_task` | Update task title, status, description, or report |
-| `delete_task` | Delete a task |
-
-### Index Commands (IMPORTANT)
-
-**CRITICAL**: Before running any series of CLI commands, you MUST run `rebuild_index_db` first to ensure the index is up-to-date. This syncs the SQLite index with the filesystem, enabling fast searches.
-
-| Command | Description |
-|---------|-------------|
-| `rebuild_index_db` | Sync SQLite index with filesystem - **run this first before any workflow** |
-
-**Workflow pattern:**
-```bash
-# ALWAYS start with rebuild_index_db
 uvx --from shai-tix==0.1.3 shai-tix rebuild_index_db
-
-# Now you can run queries efficiently
-uvx --from shai-tix==0.1.3 shai-tix list_stories
-uvx --from shai-tix==0.1.3 shai-tix search_tasks --status TODO
-# ... more commands
 ```
+
+**Step 2**: Run `-h` to see all available subcommands:
+```bash
+uvx --from shai-tix==0.1.3 shai-tix -h
+```
+
+**Step 3**: Based on SKILL doc scenarios, identify which subcommands you need, then run `-h` for each to learn the exact arguments:
+```bash
+# Run multiple -h commands in parallel to get usage info
+uvx --from shai-tix==0.1.3 shai-tix create_story -h
+uvx --from shai-tix==0.1.3 shai-tix create_task -h
+uvx --from shai-tix==0.1.3 shai-tix list_stories -h
+```
+
+**Step 4**: Now execute the actual commands with correct arguments.
+
+### Available Subcommands
+
+- **Story**: `create_story`, `get_story`, `list_stories`, `search_stories`, `update_story`, `delete_story`
+- **Task**: `create_task`, `get_task`, `list_tasks`, `list_tasks_by_story`, `search_tasks`, `update_task`, `delete_task`
+- **Index**: `rebuild_index_db` (run this first before any workflow)
 
 ## Common Scenarios
+
+These examples show typical workflows. **Always run `<subcommand> -h` first** to confirm exact argument format before executing.
 
 ### Creating a New Feature (Story with Tasks)
 
