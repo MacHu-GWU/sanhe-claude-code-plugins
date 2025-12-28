@@ -7,6 +7,8 @@ description: "File-based task management with shai-tix CLI. Use when user mentio
 
 A local JIRA-like task management system. Uses CLI to manage stories and tasks stored in `.tix/` directory under git repo root. All data is human-readable markdown files tracked by git.
 
+**First step for any operation**: `uvx --from shai-tix==0.1.3 shai-tix rebuild_index_db`
+
 ## Command Format
 
 All commands run via `uvx` (no installation needed):
@@ -105,7 +107,9 @@ uvx --from shai-tix==0.1.3 shai-tix list_stories -h
 
 ## Common Scenarios
 
-These examples show typical workflows. **Always run `<subcommand> -h` first** to confirm exact argument format before executing.
+These examples show typical workflows. **Remember**:
+1. Run `rebuild_index_db` first
+2. Run `<subcommand> -h` to confirm exact argument format before executing
 
 ### Creating a New Feature (Story with Tasks)
 
