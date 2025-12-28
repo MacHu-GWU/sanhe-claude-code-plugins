@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Write(.claude/**/*.md)",
+      "Write(.claude-plugin/marketplace.json)",
+      "Write(plugins/**/*.md)",
+      "Write(plugins/**/*.py)",
+      "Write(plugins/**/plugin.json)",
+      "Write(./**/*.rst)"
+    ]
+  }
+}
