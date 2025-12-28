@@ -10,6 +10,11 @@
             "description": "Tell me a joke plugin for Claude Code."
         },
         {
+            "name": "mini-kanban",
+            "source": "./plugins/general/mini-kanban",
+            "description": "mini kanban task management for Claude Code."
+        },
+        {
             "name": "sanhe-py-best-practices",
             "source": "./plugins/python/sanhe-py-best-practices",
             "description": "Sanhe's Python Best Practices."
