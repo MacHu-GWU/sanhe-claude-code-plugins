@@ -34,7 +34,7 @@ Story (Feature/Epic)
 - **Story**: High-level feature or requirement
 - **Task**: Specific work item under a Story
 
-Keep hierarchy flat. If a task needs subtasks, promote it to a story.
+**Best practice**: If a story involves multiple independently testable steps, break it down into tasks. Tasks may have dependencies - describe the order/prerequisites in each task's description.
 
 ### File System Structure
 
