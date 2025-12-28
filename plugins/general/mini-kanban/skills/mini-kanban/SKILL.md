@@ -1,28 +1,24 @@
 ---
 name: mini-kanban
-description: File-based task management with shai-tix CLI. Use when user mentions kanban, ticket, planning, task tracking, or references tickets by [id] or #id format.
+description: "File-based task management with shai-tix CLI. Use when user mentions kanban, ticket, planning, task tracking, or references tickets by [id] or #id format. MUST run via: uvx --from shai-tix==0.1.3 shai-tix <cmd>. Data stored in .tix/ directory (NOT .shai-tix/)."
 ---
 
 # mini-kanban
 
-A file-based Kanban/task management system using the `shai-tix` CLI tool. All data is stored as human-readable files in the `.tix/` directory.
+A local JIRA-like task management system. Uses CLI to manage stories and tasks stored in `.tix/` directory under git repo root. All data is human-readable markdown files tracked by git.
 
-## IMPORTANT: How to Run shai-tix
+## Command Format
 
-**ALWAYS use `uvx` to run shai-tix commands. Do NOT run `shai-tix` directly.**
+All commands run via `uvx` (no installation needed):
 
 ```bash
-# CORRECT - use uvx
 uvx --from shai-tix==0.1.3 shai-tix <command>
-
-# WRONG - do not do this
-shai-tix <command>
 ```
 
-**Key points:**
-- There is NO `init` command. The `.tix/` directory is created automatically on first use.
-- The data directory is `.tix/` (NOT `.shai-tix/`)
-- Always include `--from shai-tix==0.1.3` to ensure correct version
+Example:
+```bash
+uvx --from shai-tix==0.1.3 shai-tix create_story "My Feature" --description "Description here"
+```
 
 ## Core Concepts
 
@@ -39,6 +35,8 @@ Story (Feature/Epic)
 Keep hierarchy flat. If a task needs subtasks, promote it to a story.
 
 ### File System Structure
+
+While you can access files directly, **prefer using CLI commands** as the primary API for list/search/get/create/update/delete operations on stories and tasks.
 
 ```
 .tix/
@@ -75,7 +73,11 @@ Keep hierarchy flat. If a task needs subtasks, promote it to a story.
 
 ## CLI Commands
 
-**Run via uvx:** `uvx --from shai-tix==0.1.3 shai-tix <command>`
+Most operations should be done via CLI. Run all commands with uvx:
+
+```bash
+uvx --from shai-tix==0.1.3 shai-tix <command>
+```
 
 For detailed usage of any command:
 ```bash
