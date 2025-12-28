@@ -7,6 +7,23 @@ description: File-based task management with shai-tix CLI. Use when user mention
 
 A file-based Kanban/task management system using the `shai-tix` CLI tool. All data is stored as human-readable files in the `.tix/` directory.
 
+## IMPORTANT: How to Run shai-tix
+
+**ALWAYS use `uvx` to run shai-tix commands. Do NOT run `shai-tix` directly.**
+
+```bash
+# CORRECT - use uvx
+uvx --from shai-tix==0.1.3 shai-tix <command>
+
+# WRONG - do not do this
+shai-tix <command>
+```
+
+**Key points:**
+- There is NO `init` command. The `.tix/` directory is created automatically on first use.
+- The data directory is `.tix/` (NOT `.shai-tix/`)
+- Always include `--from shai-tix==0.1.3` to ensure correct version
+
 ## Core Concepts
 
 ### Story and Task Hierarchy
@@ -58,11 +75,13 @@ Keep hierarchy flat. If a task needs subtasks, promote it to a story.
 
 ## CLI Commands
 
-Run via uvx: `uvx --from shai-tix==0.1.3 shai-tix <command>`
+**Run via uvx:** `uvx --from shai-tix==0.1.3 shai-tix <command>`
 
-For detailed usage of any command, run:
-- `shai-tix -h` - List all commands
-- `shai-tix <command> -h` - Command-specific help
+For detailed usage of any command:
+```bash
+uvx --from shai-tix==0.1.3 shai-tix -h                    # List all commands
+uvx --from shai-tix==0.1.3 shai-tix <command> -h          # Command-specific help
+```
 
 ### Story Commands
 
