@@ -1,12 +1,49 @@
 {
   "permissions": {
+    "defaultMode": "acceptEdits",
     "allow": [
-      "Write(.claude/**/*.md)",
+      "Read(========== Read Section ==========)",
+      "Read(========== Write Section ==========)",
+      "Write(.claude/commands/*.md)",
+      "Write(.claude/skills/*/SKILL.md)",
+      "Write(.claude/skills/*/references/*)",
+      "Write(.claude/skills/*/scripts/*)",
+      "Write(.claude/skills/*/assets/*)",
       "Write(.claude-plugin/marketplace.json)",
       "Write(plugins/**/*.md)",
       "Write(plugins/**/*.py)",
       "Write(plugins/**/plugin.json)",
-      "Write(./**/*.rst)"
-    ]
+      "Write(./**/*.rst)",
+      "Read(========== Edit Section ==========)",
+      "Edit(.claude/commands/*.md)",
+      "Edit(.claude/skills/*/SKILL.md)",
+      "Edit(.claude/skills/*/references/*)",
+      "Edit(.claude/skills/*/scripts/*)",
+      "Edit(.claude/skills/*/assets/*)",
+      "Edit(.claude-plugin/marketplace.json)",
+      "Edit(plugins/**/*.md)",
+      "Edit(plugins/**/*.py)",
+      "Edit(plugins/**/plugin.json)",
+      "Read(========== Bash Section ==========)",
+      "Bash(tree:*)",
+      "Bash(mkdir:*)",
+      "Bash(chmod:*)",
+      "Bash(python:*)",
+      "Bash(mv:*)",
+      "Bash(find:*)",
+      "Read(========== Skill Section ==========)",
+      "Skill(command-creator)",
+      "Skill(skill-creator)",
+      "Skill(release-note)",
+      "Skill(build-command)",
+      "Skill(build-skill)",
+      "Skill(build-skill-and-command)",
+      "Skill(write-release-note)",
+      "Read(========== Web Search ==========)",
+      "WebSearch",
+      "WebFetch(domain:raw.githubusercontent.com)"
+    ],
+    "deny": [],
+    "ask": []
   }
 }
