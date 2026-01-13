@@ -10,7 +10,7 @@ name = "sanhe_claude_code_plugins"
 # (Read https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#version)
 # So this value has to be aligned with the one in ``sanhe_claude_code_plugins/_version.py``
 version = "0.1.1"
-description = "Python claude code plugins."
+description = "Sanhe's Claude Code Plugins"
 # Read https://dev-exp-share.readthedocs.io/en/latest/search.html?q=Pick+An+Open+Source+License+For+Python+Project&check_keywords=yes&area=default
 # To pick a license and update the ``license``, ``classifier`` field in ``pyproject.toml``
 # And also update the ``LICENSE.txt`` file in the git repo.
@@ -108,11 +108,11 @@ auto = [
 
 # Quick Links
 [project.urls]
-Homepage = "https://github.com/MacHu-GWU/sanhe_claude_code_plugins-project"
+Homepage = "https://github.com/MacHu-GWU/sanhe-claude-code-plugins"
 Documentation = "https://sanhe-claude-code-plugins.readthedocs.io/en/latest/"
-Repository = "https://github.com/MacHu-GWU/sanhe_claude_code_plugins-project"
-Issues = "https://github.com/MacHu-GWU/sanhe_claude_code_plugins-project/issues"
-Changelog = "https://github.com/MacHu-GWU/sanhe_claude_code_plugins-project/blob/main/release-history.rst"
+Repository = "https://github.com/MacHu-GWU/sanhe-claude-code-plugins"
+Issues = "https://github.com/MacHu-GWU/sanhe-claude-code-plugins/issues"
+Changelog = "https://github.com/MacHu-GWU/sanhe-claude-code-plugins/blob/main/release-history.rst"
 Download = "https://pypi.org/pypi/sanhe-claude-code-plugins#files"
 
 # For command line interface, read: https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#creating-executable-scripts

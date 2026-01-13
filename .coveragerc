@@ -1,0 +1,28 @@
+# Coverage.py is a tool for measuring code coverage of Python programs.
+# for more info: https://coverage.readthedocs.io/en/latest/config.html
+[run]
+omit =
+    sanhe_claude_code_plugins/docs/*
+    sanhe_claude_code_plugins/tests/*
+    sanhe_claude_code_plugins/vendor/*
+    sanhe_claude_code_plugins/_version.py
+    sanhe_claude_code_plugins/cli.py
+    sanhe_claude_code_plugins/paths.py
+
+[report]
+# Regexes for lines to exclude from consideration
+exclude_lines =
+    # Have to re-enable the standard pragma
+    pragma: no cover
+
+    # Don't complain about missing debug-only code:
+    def __repr__
+    if self\.debug
+
+    # Don't complain if tests don't hit defensive assertion code:
+    raise AssertionError
+    raise NotImplementedError
+
+    # Don't complain if non-runnable code isn't run:
+    if 0:
+    if __name__ == .__main__.:
