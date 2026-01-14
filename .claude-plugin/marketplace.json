@@ -7,7 +7,7 @@
         {
             "name": "claude-code-plugin-creator",
             "source": "./plugins/claude-code/claude-code-plugin-creator",
-            "description": "See https://github.com/MacHu-GWU/sanhe-claude-code-plugins/blob/main/plugins/claude-code/claude-code-plugin-creator/README.md"
+            "description": "Create Claude Code plugins (Agent Skills and Slash Commands) with guided workflows and best practices. See https://github.com/MacHu-GWU/sanhe-claude-code-plugins/blob/main/plugins/claude-code/claude-code-plugin-creator/README.md"
         },
         {
             "name": "tell-me-a-joke",
