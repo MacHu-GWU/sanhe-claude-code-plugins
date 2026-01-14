@@ -1,0 +1,8 @@
+{
+    "name": "claude-code-plugin-creator",
+    "description": "For Claude Code plugin Creator",
+    "version": "0.1.1",
+    "author": {
+        "name": "Sanhe Hu"
+    }
+}

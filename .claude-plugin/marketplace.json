@@ -5,6 +5,11 @@
     },
     "plugins": [
         {
+            "name": "claude-code-plugin-creator",
+            "source": "./plugins/claude-code/claude-code-plugin-creator",
+            "description": ""
+        },
+        {
             "name": "tell-me-a-joke",
             "source": "./plugins/general/tell-me-a-joke",
             "description": "Tell me a joke plugin for Claude Code."
