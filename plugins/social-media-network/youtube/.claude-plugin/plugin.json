@@ -1,6 +1,6 @@
 {
     "name": "Youtube",
-    "description": "Youtube toolkit for Claude Code.",
+    "description": "Youtube toolkit for Claude Code. See https://github.com/MacHu-GWU/sanhe-claude-code-plugins/blob/main/plugins/social-media-network/youtube/README.md",
     "version": "1.0.0",
     "author": {
         "name": "Sanhe Hu"

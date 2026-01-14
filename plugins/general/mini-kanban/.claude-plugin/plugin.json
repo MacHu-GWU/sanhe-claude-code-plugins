@@ -1,6 +1,6 @@
 {
     "name": "mini-kanban",
-    "description": "mini kanban.",
+    "description": "mini kanban task management for Claude Code. See https://github.com/MacHu-GWU/sanhe-claude-code-plugins/blob/main/plugins/general/mini-kanban/README.md",
     "version": "0.1.6",
     "author": {
         "name": "Sanhe Hu"

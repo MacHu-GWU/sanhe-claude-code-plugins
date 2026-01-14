@@ -1,6 +1,6 @@
 {
     "name": "tell-me-a-joke",
-    "description": "Tell me a joke plugin for Claude Code.",
+    "description": "Tell me a joke plugin for Claude Code. See https://github.com/MacHu-GWU/sanhe-claude-code-plugins/blob/main/plugins/general/tell-me-a-joke/README.md",
     "version": "1.0.0",
     "author": {
         "name": "Sanhe Hu"

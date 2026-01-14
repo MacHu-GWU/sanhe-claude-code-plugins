@@ -1,6 +1,6 @@
 {
     "name": "sanhe-py-best-practices",
-    "description": "Sanhe's Python Best Practices",
+    "description": "Sanhe's Python Best Practices. See https://github.com/MacHu-GWU/sanhe-claude-code-plugins/blob/main/plugins/python/sanhe-py-best-practices/README.md",
     "version": "1.0.3",
     "author": {
         "name": "Sanhe Hu"

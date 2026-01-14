@@ -1,33 +1,33 @@
 {
     "name": "sanhe-claude-code-plugins",
     "owner": {
-        "name": "Sanhe Hu"
+        "name": "Sanhe Hu",
     },
     "plugins": [
         {
             "name": "claude-code-plugin-creator",
             "source": "./plugins/claude-code/claude-code-plugin-creator",
-            "description": ""
+            "description": "See https://github.com/MacHu-GWU/sanhe-claude-code-plugins/blob/main/plugins/claude-code/claude-code-plugin-creator/README.md"
         },
         {
             "name": "tell-me-a-joke",
             "source": "./plugins/general/tell-me-a-joke",
-            "description": "Tell me a joke plugin for Claude Code."
+            "description": "Tell me a joke plugin for Claude Code. See https://github.com/MacHu-GWU/sanhe-claude-code-plugins/blob/main/plugins/general/tell-me-a-joke/README.md"
         },
         {
             "name": "mini-kanban",
             "source": "./plugins/general/mini-kanban",
-            "description": "mini kanban task management for Claude Code."
+            "description": "mini kanban task management for Claude Code. See https://github.com/MacHu-GWU/sanhe-claude-code-plugins/blob/main/plugins/general/mini-kanban/README.md"
         },
         {
             "name": "sanhe-py-best-practices",
             "source": "./plugins/python/sanhe-py-best-practices",
-            "description": "Sanhe's Python Best Practices."
+            "description": "Sanhe's Python Best Practices. See https://github.com/MacHu-GWU/sanhe-claude-code-plugins/blob/main/plugins/python/sanhe-py-best-practices/README.md"
         },
         {
             "name": "youtube",
             "source": "./plugins/social-media-network/youtube",
-            "description": "Youtube toolkit for Claude Code."
+            "description": "Youtube toolkit for Claude Code. See https://github.com/MacHu-GWU/sanhe-claude-code-plugins/blob/main/plugins/social-media-network/youtube/README.md"
         }
     ]
 }
