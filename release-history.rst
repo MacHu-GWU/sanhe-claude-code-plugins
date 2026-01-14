@@ -15,6 +15,17 @@ x.y.z (Backlog)
 **Miscellaneous**
 
 
+0.1.3 (2026-01-14)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Bugfixes**
+
+- Fix broken marketplace.json that was incorrectly generated in 0.1.2
+
+.. warning::
+
+    Version 0.1.2 is broken due to invalid marketplace.json. Please use 0.1.3 or later.
+
+
 0.1.2 (2026-01-14)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 **Add**
